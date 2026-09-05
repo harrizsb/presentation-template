@@ -1,0 +1,116 @@
+% header.tex -- Neutral Beamer theme partial
+% Loaded by the `neutral-beamer` Quarto format extension via include-in-header.
+% All theme LaTeX lives here to avoid TeX input-path issues with a separate .sty.
+
+% ---------------------------------------------------------------
+% 1. Base theme: metropolis with flourishes disabled
+% ---------------------------------------------------------------
+% The base theme (metropolis) is injected by Quarto from the format's
+% `theme:` option in _extension.yml. We only apply metropolis *options*
+% here, guarded so a user who overrides `theme:` (e.g. Madrid) does not
+% get a duplicate \usetheme clash.
+\makeatletter
+\@ifpackageloaded{beamerthememetropolis}{%
+  \metroset{progressbar=frametitle, titleformat=regular,
+            block=transparent, sectionpage=progressbar}%
+}{}
+\makeatother
+
+% ---------------------------------------------------------------
+% 2. Color palette (WCAG AAA on the off-white background)
+% ---------------------------------------------------------------
+\definecolor{neutralBg}{HTML}{F7F7F5}
+\definecolor{neutralFg}{HTML}{2C2C2C}
+\definecolor{neutralStructure}{HTML}{006B8C}
+\definecolor{neutralAlert}{HTML}{B84300}
+\definecolor{neutralGray}{HTML}{9E9E9E}
+
+% Map the palette onto beamer color keys
+\setbeamercolor{background canvas}{bg=neutralBg}
+\setbeamercolor{normal text}{fg=neutralFg, bg=neutralBg}
+\setbeamercolor{structure}{fg=neutralStructure}
+\setbeamercolor{alerted text}{fg=neutralAlert}
+\setbeamercolor{palette primary}{fg=neutralBg, bg=neutralStructure}
+\setbeamercolor{palette secondary}{fg=neutralStructure, bg=neutralBg}
+\setbeamercolor{palette tertiary}{fg=neutralFg, bg=neutralBg}
+\setbeamercolor{palette quaternary}{fg=neutralFg, bg=neutralBg}
+\setbeamercolor{title}{fg=neutralStructure}
+\setbeamercolor{frametitle}{fg=neutralStructure, bg=neutralBg}
+\setbeamercolor{item}{fg=neutralGray}
+\setbeamercolor{block title}{fg=neutralStructure, bg=}
+\setbeamercolor{block body}{bg=}
+\setbeamercolor{section in head/foot}{fg=neutralStructure, bg=neutralBg}
+\setbeamercolor{progress bar}{fg=neutralStructure, bg=neutralStructure!15!neutralBg}
+\setbeamercolor{frametitle continuation}{fg=neutralGray, bg=neutralBg}
+
+% ---------------------------------------------------------------
+% 3. Typography: pdfLaTeX -> sourcesanspro; Xe/LuaLaTeX -> fontspec
+% ---------------------------------------------------------------
+\makeatletter
+\ifdefined\Uchar
+  % XeLaTeX or LuaLaTeX: use fontspec with Source Sans 3, fall back
+  % to Latin Modern Sans when the font is not installed on the system.
+  \IfFontExistsTF{Source Sans 3}{%
+    \setsansfont{Source Sans 3}%
+    \setmainfont{Source Sans 3}%
+  }{%
+    \setsansfont{Latin Modern Sans}%
+    \setmainfont{Latin Modern Sans}%
+  }
+  \IfFontExistsTF{Source Code Pro}{%
+    \setmonofont{Source Code Pro}%
+  }{%
+    \setmonofont{Latin Modern Mono}%
+  }
+\else
+  % pdfLaTeX: use the LaTeX packages, which bundle the fonts
+  \usepackage[default]{sourcesanspro}
+  \usepackage{sourcecodepro}
+\fi
+\makeatother
+\renewcommand{\familydefault}{\sfdefault}
+
+% No size reduction in nested list items
+\setbeamerfont{itemize subitem}{size=\normalsize}
+\setbeamerfont{itemize subsubitem}{size=\normalsize}
+\setbeamerfont{enumerate subitem}{size=\normalsize}
+\setbeamerfont{enumerate subsubitem}{size=\normalsize}
+
+% ---------------------------------------------------------------
+% 4. Layout
+% ---------------------------------------------------------------
+% No navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Minimal footer: slide numbers, right-aligned, light gray
+\setbeamercolor{footline}{fg=neutralGray, bg=neutralBg}
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.5ex,%
+      leftskip=10mm,rightskip=10mm]{footline}%
+    \hfill\color{neutralGray}\normalsize\insertframenumber\hspace*{2mm}%
+  \end{beamercolorbox}%
+}
+
+% 10mm left/right text margins
+\setbeamersize{text margin left=10mm, text margin right=10mm}
+
+% Circle bullets, light gray
+\setbeamertemplate{itemize item}{\color{neutralGray}\raise1.5pt\hbox{\small$\bullet$}}
+\setbeamertemplate{itemize subitem}{\color{neutralGray}\raise1pt\hbox{\footnotesize$\bullet$}}
+\setbeamertemplate{itemize subsubitem}{\color{neutralGray}\raise0.5pt\hbox{\scriptsize$\bullet$}}
+\setbeamercolor{itemize item}{fg=neutralGray}
+\setbeamercolor{itemize subitem}{fg=neutralGray}
+\setbeamercolor{itemize subsubitem}{fg=neutralGray}
+
+% Transparent blocks, titles in teal
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamercolor{block title}{fg=neutralStructure, bg=}
+\setbeamercolor{block body}{fg=neutralFg, bg=}
+
+% Alert = bold + terracotta (color and weight, not color alone)
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamercolor{alerted text}{fg=neutralAlert}
+
+% Line spacing
+\usepackage{setspace}
+\setstretch{1.5}

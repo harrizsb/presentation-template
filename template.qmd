@@ -1,0 +1,166 @@
+---
+title: "A Neutral Presentation Template"
+subtitle: "Clear structure, low density, easy to read"
+author: "Author Name"
+institute: "Department, University"
+date: today
+date-format: long
+format:
+  neutral-beamer:
+    aspectratio: 43
+    # aspectratio: 169   # uncomment for 16:9 widescreen
+    fontsize: 11pt
+    section-titles: true
+    slide-level: 2
+---
+
+## Overview
+
+This template is a starting point you can copy and edit.
+
+- Neutral palette and typography for any topic
+- One idea per slide, generous whitespace
+- Built on Beamer with the Metropolis base theme
+
+:::: {.notes}
+Welcome the audience and outline the session in one sentence.
+::::
+
+# Section pages
+
+## How section pages work
+
+Use a level-1 heading to create a section page.
+
+The Metropolis `sectionpage=progressbar` option draws a progress bar above the section title.
+
+## What you get
+
+A minimal, readable default with no branding:
+
+- Off-white canvas, dark text, teal structure, terracotta alerts
+- Source Sans for text, Source Code Pro for monospace
+- Circle bullets in light gray, transparent blocks
+
+## Bullet lists
+
+Bullet lists use light-gray circle markers:
+
+- First point states the main idea
+- Second point adds supporting detail
+  - Nested points keep the same size as the parent
+  - No shrinking at deeper levels
+- Third point closes the set
+
+Keep each list to three to five items.
+
+## Numbered lists
+
+For sequences and steps:
+
+1. Define the question or goal
+2. Collect and check the evidence
+3. Analyse and compare alternatives
+4. Summarise the outcome
+
+Numbered lists work well for methods and timelines.
+
+## Emphasis and alert
+
+Regular emphasis uses *italic* or **bold**.
+
+Alerted text combines bold and color: [critical value]{.alert}.
+
+Use alerts sparingly, one per slide at most.
+
+:::: {.callout-note}
+## Quarto callout
+
+This is a `::: {.callout-note}` block. In Beamer it renders as a transparent block with a teal title.
+
+Use callouts for definitions, notes, or takeaways.
+::::
+
+## Transparent block
+
+:::: {.callout-tip}
+## Block title
+
+Blocks are transparent by design. The title appears in teal and the body inherits the normal text color.
+
+Use blocks to group a definition, example, or summary without adding visual weight.
+::::
+
+## Two-column layout
+
+:::: {.columns}
+
+::: {.column width="48%"}
+**Left column**
+
+- Compact point
+- Another point
+- Keeps text scannable
+:::
+
+::: {.column width="48%"}
+**Right column**
+
+- Parallel point
+- Supporting detail
+- Balanced whitespace
+:::
+
+::::
+
+Columns help you place text beside a figure, table, or list.
+
+## Simple table
+
+| Method | Sample | Accuracy |
+|--------|--------|----------|
+| A      | 120    | 0.82     |
+| B      | 120    | 0.87     |
+| C      | 120    | 0.91     |
+
+: A minimal table with a caption
+
+Keep tables small. For larger data, split across slides or move details to an appendix.
+
+## Code
+
+Code uses Source Code Pro (or Latin Modern Mono as fallback). This deck shows a
+fenced code block, which renders without needing a Jupyter kernel:
+
+```python
+def mean(values):
+    return sum(values) / len(values)
+
+mean([2, 4, 6, 8])
+```
+
+For executable cells, use an executable Python cell with `#| echo: true` and `#| eval: true`, and ensure a Python kernel is installed.
+
+## Math
+
+Inline math: $y = mx + c$. Display math:
+
+$$
+\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon
+$$
+
+Equations use the Beamer math fonts and respect the surrounding text size.
+
+# Appendix
+
+## References and closing
+
+- Copy `template.qmd` to start a new talk
+- Replace title, author, and section headings
+- Keep one idea per slide
+
+Thank you.
+
+:::: {.notes}
+Close with a single takeaway and an invitation for questions.
+::::

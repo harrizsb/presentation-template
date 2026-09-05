@@ -1,0 +1,28 @@
+# Quarto build cache
+.quarto/
+
+# Generated LaTeX intermediates (NOT the extension source in _extensions/)
+/template.tex
+/template.aux
+/template.log
+/template.nav
+/template.snm
+/template.toc
+/template.vrb
+/template.out
+/template.fls
+/template.fdb_latexmk
+/template.synctex.gz
+
+# Quarto support directories
+*_files/
+
+# Local scratch / diagnostics
+.diag/
+scratch.*
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
