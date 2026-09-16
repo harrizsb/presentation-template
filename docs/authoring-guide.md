@@ -1,306 +1,131 @@
 # Authoring guide
 
-This guide explains how to write slide content for the `neutral-beamer` Quarto
-format. It covers the document frontmatter and every content block the template
-supports: slides, section pages, lists, emphasis, callouts, columns, tables,
-code, math, and speaker notes. Every snippet below is valid for this extension
-and is taken from or consistent with `template.qmd`.
+This guide defines the content contract for `neutral-beamer`. The PDF is the only source of truth: do not rely on speaker notes or an accompanying talk.
 
-## Before you start
+## Before writing
 
-Set the format and keep the extension folder in place:
+Create a brief with the topic, purpose, audience, desired takeaway, intended duration, and evidence/source boundaries. Assume the audience has no prior background unless the brief explicitly says otherwise.
 
-- Use `format: neutral-beamer` in your document's YAML frontmatter.
-- Keep the `_extensions/neutral/` folder next to your `.qmd`. Quarto resolves
-  extensions relative to the document's directory, so rendering from a different
-  folder (for example `/tmp`) fails.
-- To render: `quarto render your-deck.qmd`. The output is `your-deck.pdf` in the
-  same folder.
+Write as a domain-fluent presenter explaining one useful idea to an intelligent outsider. Do not perform expertise. Make the idea understandable.
 
-The palette and fonts are fixed in `_extensions/neutral/header.tex`. `brand.yml`
-is not applied on the Beamer path, so colors and fonts are not changed through
-Quarto's branding system. Edit `header.tex` if you need different colors or fonts.
+## Language contract
 
-## Document frontmatter
+- Start with content. Do not greet, welcome, thank, congratulate, or add social filler.
+- Use direct, concrete language. Avoid hedging and report-speak.
+- Keep sentences concise but connect them with reasoning: `because`, `so`, `however`, and `as a result`.
+- Avoid deictic phrases such as "as you can see here". A cold reader may not know which page or visual you mean.
+- End with a conclusion or consequence, never a courtesy.
 
-The frontmatter sets the title slide and deck-wide options. The template uses
-these fields:
+## Novice-first contract
 
-```yaml
----
-title: "A Neutral Presentation Template"
-subtitle: "Clear structure, low density, easy to read"
-author: "Author Name"
-institute: "Department, University"
-date: today
-date-format: long
-format:
-  neutral-beamer:
-    aspectratio: 43
-    fontsize: 11pt
-    section-titles: true
-    slide-level: 2
----
-```
+- Expand every acronym on first use.
+- Define each technical term before it is needed.
+- Explain what every figure, table, equation, and code sample shows and why it matters.
+- Define every symbol in an equation.
+- Prefer a concrete example before an abstraction.
+- Avoid forward references such as "we will see later".
 
-Field notes:
+## Density and pacing
 
-- `title`, `subtitle`, `author`, `institute` are plain text or quoted strings.
-  They appear on the title slide.
-- `date: today` inserts the render date. `date-format: long` selects the long
-  written-out form (for example "September 5, 2026").
-- `format.neutral-beamer` holds deck options. `aspectratio: 43` is 4:3; use
-  `169` for 16:9 widescreen. `fontsize: 11pt` is the body text size.
-  `section-titles: true` turns level-1 headings into section pages.
-  `slide-level: 2` means level-2 headings start new slides.
+- One claim or concept per content slide.
+- If a slide needs more explanation, add a slide rather than shrinking text or adding bullets.
+- Keep lists to three to five items.
+- Keep tables small; split wide or tall tables.
+- Keep code short and explain it in plain language.
+- Preserve generous whitespace. The template's 11pt body and 1.5 line spacing are a limit, not a challenge.
 
-The defaults injected by the extension are: theme `metropolis`, aspect ratio
-`43`, font size `11pt`, section titles on, numbered sections on, no navigation
-symbols, the `xelatex` PDF engine, and `header.tex` included in the header.
+## Structure
 
-## Slide anatomy
-
-The deck is organized by heading level:
-
-- A level-2 heading (`##`) starts a slide.
+- A level-2 heading (`##`) starts a content slide.
 - A level-1 heading (`#`) starts a section page.
-- `slide-level: 2` is what makes level-2 headings become slides.
+- A slide title should state the claim, not merely name a topic.
 
 ```markdown
-## This is a slide
+## Newton's second law connects force to acceleration
 
-Body text and a short bullet list go here.
+Force equals mass times acceleration: F = ma.
 
-# This is a section page
-
-A level-1 heading becomes a full section page with a progress bar above the
-title. Use section pages to divide the talk into parts.
+A heavier shopping cart accelerates less when the same force pushes it.
 ```
 
-Section page behavior you should expect:
+## Supported constructs
 
-- Section pages are not numbered, but they still count as frames in the deck.
-- Because of that, the slide number shown after a section page looks "off by
-  one" compared with the PDF page index. This is expected, not a bug. For
-  example, if a section page is frame 4, the next content slide is frame 5 but
-  its printed number may read 4. The printed number tracks content frames, not
-  the raw PDF page count.
+Keep the extension beside the `.qmd`; Quarto resolves it relative to the document.
 
-## Bullet lists
-
-Bullet lists use light-gray circle markers. Indent nested items with two or
-more spaces. Nested items keep the same font size as their parent; they do not
-shrink at deeper levels.
+### Lists
 
 ```markdown
-- First point states the main idea
-- Second point adds supporting detail
-  - Nested points keep the same size as the parent
-  - No shrinking at deeper levels
-- Third point closes the set
+- State the main idea
+- Add supporting detail
+- Close the set
 ```
 
-Keep each list to three to five items.
+### Callouts
 
-## Numbered lists
-
-Numbered lists work for sequences, steps, and methods:
-
-```markdown
-1. Define the question or goal
-2. Collect and check the evidence
-3. Analyse and compare alternatives
-4. Summarise the outcome
-```
-
-## Emphasis and alert
-
-Use Markdown emphasis for ordinary stress. Use the `.alert` span for a term you
-want to stand out in bold terracotta.
-
-```markdown
-Regular emphasis uses *italic* or **bold**.
-
-Alerted text combines bold and color: [critical value]{.alert}.
-
-Use alerts sparingly, one per slide at most.
-```
-
-Rules:
-
-- `*italic*` and `**bold**` are standard Markdown and never rely on color alone.
-- `[term]{.alert}` renders bold in terracotta. It is color plus weight, not color
-  alone, so it stays readable for everyone.
-- Alerts draw the eye. Use at most one per slide so the emphasis is not diluted.
-
-## Callouts
-
-Quarto callouts render on Beamer as transparent blocks with a teal title. Use
-`callout-note` and `callout-tip` for definitions, notes, or takeaways.
+Callouts render as transparent blocks with teal titles. Use them for a definition or takeaway, not for packing extra content.
 
 ```markdown
 ::: {.callout-note}
-## Quarto callout
+## Definition
 
-This is a `::: {.callout-note}` block. In Beamer it renders as a transparent
-block with a teal title.
-
-Use callouts for definitions, notes, or takeaways.
-:::
-
-::: {.callout-tip}
-## Block title
-
-Blocks are transparent by design. The title appears in teal and the body
-inherits the normal text color.
+A short explanation that stands on its own.
 :::
 ```
 
-Notes:
+### Columns
 
-- The `##` inside the callout is the block title; it appears in teal.
-- The block body is transparent, so the off-white background shows through.
-- Callouts add no visual weight, which fits the low-density layout.
-
-## Two-column layout
-
-Wrap columns in a `columns` div, then put each side in a `column` div with a
-`width`. The widths are percentages of the text area; two `48%` columns leave a
-small gap.
+Use two balanced columns for a comparison or text beside a visual. Do not use columns to fit twice as much text on one slide.
 
 ```markdown
 ::: {.columns}
-
 ::: {.column width="48%"}
-**Left column**
+**One side**
 
-- Compact point
-- Another point
-- Keeps text scannable
+Short content.
 :::
-
 ::: {.column width="48%"}
-**Right column**
+**Other side**
 
-- Parallel point
-- Supporting detail
-- Balanced whitespace
+Short content.
 :::
-
 :::
 ```
 
-Use columns to place text beside a figure, table, or list. Keep the two widths
-summing below 100 percent so the columns do not collide.
+### Tables
 
-## Tables
-
-Write a Markdown table and add a caption on a line starting with `:`.
+Use a small Markdown table with a caption. Split complex tables across slides.
 
 ```markdown
-| Method | Sample | Accuracy |
-|--------|--------|----------|
-| A      | 120    | 0.82     |
-| B      | 120    | 0.87     |
-| C      | 120    | 0.91     |
+| Method | Result |
+|---|---|
+| A | 0.82 |
+| B | 0.91 |
 
-: A minimal table with a caption
+: A small comparison
 ```
 
-Keep tables small. For larger data, split the table across slides or move the
-details to an appendix. Wide tables do not shrink to fit, so a few columns and
-rows read best.
+### Code and math
 
-## Code
+Use fenced code when showing code; do not require a kernel for a static example. Explain what the code does. Use math only when it adds understanding, and define symbols in plain language.
 
-There are two ways to show code.
+## Forbidden constructs for self-contained PDF decks
 
-### Fenced code block (no kernel needed)
+- Speaker notes: `.notes`, raw `\\note{}`, `notes=show`, `notes=only`.
+- Pleasantries and social filler.
+- Overlays, fragments, `\\pause`, or `incremental: true`; these can produce partial PDF pages.
+- Footnotes and wide tables that compete with the frame's limited vertical space.
+- Unexplained jargon, acronyms, figures, equations, or code.
 
-A plain fenced block renders with monospace font and shading. It needs no
-Jupyter kernel, so it always works.
+## Pre-render checklist
 
-````markdown
-```python
-def mean(values):
-    return sum(values) / len(values)
+Before rendering, answer yes to every item:
 
-mean([2, 4, 6, 8])
-```
-````
+- Does each slide make one claim?
+- Can a cold reader understand the slide without a presenter?
+- Is every new term defined before use?
+- Is the language direct, concise, and natural when read aloud?
+- Are pleasantries absent?
+- Are notes and overlays absent?
+- Would splitting improve the slide? If yes, split it now.
 
-### Executable cell (needs Jupyter)
-
-An executable cell uses triple braces and cell options. It requires a Python
-(Jupyter) kernel installed on the machine.
-
-````markdown
-```{python}
-#| echo: true
-#| eval: true
-import numpy as np
-np.mean([2, 4, 6, 8])
-```
-````
-
-The `#| echo: true` option prints the source; `#| eval: true` runs it. The demo
-deck does not exercise executable cells, so test them in your own environment
-with a kernel available.
-
-## Math
-
-Inline math uses single dollar signs. Display math uses double dollar signs on
-their own lines.
-
-```markdown
-Inline math: $y = mx + c$. Display math:
-
-$$
-\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon
-$$
-```
-
-Equations use the Beamer math fonts and follow the surrounding text size.
-
-## Speaker notes
-
-Put speaker notes in a `notes` div. They are hidden from the slides and are for
-your own reference while presenting.
-
-````markdown
-::::: {.notes}
-Welcome the audience and outline the session in one sentence.
-:::::
-````
-
-Notes do not appear in the PDF. Use them for cues, timing, or things you want
-to say but not show.
-
-## Debugging a render
-
-Two practical notes when something looks wrong:
-
-- A first render occasionally fails with a transient "compilation failed"
-  message. Rerendering the same file usually succeeds. Treat a single failure as
-  a known quirk before investigating further.
-- To inspect the generated LaTeX, set `keep-tex: true` under
-  `format.neutral-beamer` in the YAML. Do not pass the `--keep-tex` CLI flag;
-  pandoc rejects it for this format.
-
-```yaml
-format:
-  neutral-beamer:
-    keep-tex: true
-```
-
-## Authoring checklist
-
-Use this checklist when building or reviewing a deck:
-
-- One idea per slide. Split a dense slide into two.
-- Keep bullet lists to three to five items.
-- Use `#` for section pages and `##` for slides.
-- Mark key terms with `[term]{.alert}`, at most one per slide.
-- Use `::: {.columns}` for side-by-side content.
-- Keep tables small; move large data to an appendix.
-- Put delivery cues in `::::: {.notes}` so they stay off the slides.
+Then follow [Validation guide](validation.md). A successful render is not sufficient; inspect the PDF pages.

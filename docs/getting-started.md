@@ -98,7 +98,7 @@ The included `template.qmd` exercises every feature. Here is what each slide dem
 | Code | Fenced `python` code block with syntax highlighting (no Jupyter required) |
 | Math | Inline `$...$` and display `$$...$$` LaTeX math |
 | Section page: "Appendix" | Second section page |
-| References and closing | Final slide with speaker notes |
+| References and closing | Final content slide |
 
 Section pages (marked with `#`) are unnumbered but still count as frames. This means the slide number on the slide following a section page will appear "off by one" relative to the PDF page index. This is expected Beamer behavior.
 
@@ -117,6 +117,7 @@ Note: `keep-tex` goes under `format.neutral-beamer` in your YAML, not as a CLI f
 ## Next steps
 
 - [Format options reference](format-options.md) -- every option, merge semantics, and override recipes
-- [Authoring guide](authoring-guide.md) -- writing slides, lists, callouts, columns, tables, code, math, notes
+- [Authoring guide](authoring-guide.md) -- writing self-contained slides, lists, callouts, columns, tables, code, and math
+- [Validation guide](validation.md) -- PDF text gates and page-by-page visual review
 - [Customization](customization.md) -- palette, fonts, spacing, footer, theme override
 - [Troubleshooting](troubleshooting.md) -- debugging, known issues, error catalog

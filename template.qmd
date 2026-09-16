@@ -14,19 +14,15 @@ format:
     slide-level: 2
 ---
 
-## Overview
+## What this template is
 
-This template is a starting point you can copy and edit.
+A starting point for building self-contained PDF slide decks.
 
 - Neutral palette and typography for any topic
 - One idea per slide, generous whitespace
 - Built on Beamer with the Metropolis base theme
 
-:::: {.notes}
-Welcome the audience and outline the session in one sentence.
-::::
-
-# Section pages
+# Layout
 
 ## How section pages work
 
@@ -76,7 +72,7 @@ Use alerts sparingly, one per slide at most.
 :::: {.callout-note}
 ## Quarto callout
 
-This is a `::: {.callout-note}` block. In Beamer it renders as a transparent block with a teal title.
+In Beamer this renders as a transparent block with a teal title.
 
 Use callouts for definitions, notes, or takeaways.
 ::::
@@ -129,8 +125,7 @@ Keep tables small. For larger data, split across slides or move details to an ap
 
 ## Code
 
-Code uses Source Code Pro (or Latin Modern Mono as fallback). This deck shows a
-fenced code block, which renders without needing a Jupyter kernel:
+Code uses Source Code Pro (or Latin Modern Mono as fallback). A fenced code block renders without needing a Jupyter kernel:
 
 ```python
 def mean(values):
@@ -138,8 +133,6 @@ def mean(values):
 
 mean([2, 4, 6, 8])
 ```
-
-For executable cells, use an executable Python cell with `#| echo: true` and `#| eval: true`, and ensure a Python kernel is installed.
 
 ## Math
 
@@ -153,14 +146,8 @@ Equations use the Beamer math fonts and respect the surrounding text size.
 
 # Appendix
 
-## References and closing
+## Start a new deck from here
 
-- Copy `template.qmd` to start a new talk
+- Copy `template.qmd` to begin a new talk
 - Replace title, author, and section headings
 - Keep one idea per slide
-
-Thank you.
-
-:::: {.notes}
-Close with a single takeaway and an invitation for questions.
-::::

@@ -26,3 +26,6 @@ scratch.*
 Thumbs.db
 *.swp
 *~
+
+/.quarto/
+**/*.quarto_ipynb
