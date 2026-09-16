@@ -85,20 +85,22 @@ The included `template.qmd` exercises every feature. Here is what each slide dem
 | Slide | What it shows |
 |-------|---------------|
 | Title slide | `title`, `subtitle`, `author`, `institute`, `date: today`, `date-format: long` |
-| Section page: "Section pages" | `#` heading creates a section page with a Metropolis progress bar |
-| How section pages work | Content slide explaining section pages |
-| What you get | Overview of the neutral palette and typography |
+| This template keeps PDF slide decks readable | Opening content slide: bullets plus one short framing sentence |
+| Section page: "One idea per slide keeps reading easy" | `#` heading creates a section page with a Metropolis progress bar |
+| A level-one heading creates a section page | Content slide explaining section pages |
+| A minimal readable default needs no branding | Overview of the neutral palette and typography |
 | Bullet lists | Flat and nested bullet items, no size reduction at deeper levels |
 | Numbered lists | Ordered list for sequences and steps |
-| Emphasis and alert | Italic, bold, and `[text]{.alert}` for bold terracotta highlighting |
-| "Quarto callout" slide | `::: {.callout-note}` block (rendered as a transparent block with teal title) |
-| Transparent block | `::: {.callout-tip}` block showing transparent block styling |
-| Two-column layout | `::: {.columns}` with two `::: {.column}` children at 48% width |
+| Emphasis and alert | "Emphasis marks key terms and alerts draw attention": italic, bold, `[text]{.alert}`, plus a `:::: {.callout-note}` block inside the same slide |
+| Transparent block | `:::: {.callout-tip}` block showing transparent block styling |
+| Two-column layout | `:::: {.columns}` with two `::: {.column}` children at 48% width |
 | Simple table | Markdown table with a `: caption` line |
 | Code | Fenced `python` code block with syntax highlighting (no Jupyter required) |
 | Math | Inline `$...$` and display `$$...$$` LaTeX math |
-| Section page: "Appendix" | Second section page |
-| References and closing | Final content slide |
+| Section page: "Extra material belongs after the main story" | Second section page |
+| A new deck starts by replacing this example | Final content slide |
+
+Note: outer callout and column fences use four colons (`::::`), inner column fences use three (`:::`).
 
 Section pages (marked with `#`) are unnumbered but still count as frames. This means the slide number on the slide following a section page will appear "off by one" relative to the PDF page index. This is expected Beamer behavior.
 

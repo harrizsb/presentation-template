@@ -14,7 +14,7 @@ format:
     slide-level: 2
 ---
 
-## What this template is
+## This template keeps PDF slide decks readable
 
 A starting point for building self-contained PDF slide decks.
 
@@ -22,15 +22,15 @@ A starting point for building self-contained PDF slide decks.
 - One idea per slide, generous whitespace
 - Built on Beamer with the Metropolis base theme
 
-# Layout
+# One idea per slide keeps reading easy
 
-## How section pages work
+## A level-one heading creates a section page
 
 Use a level-1 heading to create a section page.
 
 The Metropolis `sectionpage=progressbar` option draws a progress bar above the section title.
 
-## What you get
+## A minimal readable default needs no branding
 
 A minimal, readable default with no branding:
 
@@ -38,7 +38,7 @@ A minimal, readable default with no branding:
 - Source Sans for text, Source Code Pro for monospace
 - Circle bullets in light gray, transparent blocks
 
-## Bullet lists
+## Bullet lists nest without shrinking
 
 Bullet lists use light-gray circle markers:
 
@@ -50,7 +50,7 @@ Bullet lists use light-gray circle markers:
 
 Keep each list to three to five items.
 
-## Numbered lists
+## Numbered lists show sequences in order
 
 For sequences and steps:
 
@@ -61,7 +61,7 @@ For sequences and steps:
 
 Numbered lists work well for methods and timelines.
 
-## Emphasis and alert
+## Emphasis marks key terms and alerts draw attention
 
 Regular emphasis uses *italic* or **bold**.
 
@@ -77,7 +77,7 @@ In Beamer this renders as a transparent block with a teal title.
 Use callouts for definitions, notes, or takeaways.
 ::::
 
-## Transparent block
+## Translucent blocks carry teal headings
 
 :::: {.callout-tip}
 ## Block title
@@ -87,7 +87,7 @@ Blocks are transparent by design. The title appears in teal and the body inherit
 Use blocks to group a definition, example, or summary without adding visual weight.
 ::::
 
-## Two-column layout
+## Two columns sit side by side
 
 :::: {.columns}
 
@@ -111,7 +111,7 @@ Use blocks to group a definition, example, or summary without adding visual weig
 
 Columns help you place text beside a figure, table, or list.
 
-## Simple table
+## Small tables with captions compare cleanly
 
 | Method | Sample | Accuracy |
 |--------|--------|----------|
@@ -123,9 +123,9 @@ Columns help you place text beside a figure, table, or list.
 
 Keep tables small. For larger data, split across slides or move details to an appendix.
 
-## Code
+## Code blocks render without running anything
 
-Code uses Source Code Pro (or Latin Modern Mono as fallback). A fenced code block renders without needing a Jupyter kernel:
+The example below computes the mean of four numbers.
 
 ```python
 def mean(values):
@@ -134,9 +134,9 @@ def mean(values):
 mean([2, 4, 6, 8])
 ```
 
-## Math
+## Equations need plain-language definitions
 
-Inline math: $y = mx + c$. Display math:
+In `y = mx + c`, `m` is the slope and `c` is the starting value. The longer equation below shows a prediction made from an intercept, coefficients, inputs, and an error term.
 
 $$
 \hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon
@@ -144,9 +144,9 @@ $$
 
 Equations use the Beamer math fonts and respect the surrounding text size.
 
-# Appendix
+# Extra material belongs after the main story
 
-## Start a new deck from here
+## A new deck starts by replacing this example
 
 - Copy `template.qmd` to begin a new talk
 - Replace title, author, and section headings

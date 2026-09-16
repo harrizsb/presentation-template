@@ -24,6 +24,7 @@ Run `pdftotext deck.pdf -` and inspect the extracted text:
 
 1. **No speaker notes.** Search for strings known to appear only in notes; none may appear in the PDF.
 2. **No pleasantries.** Search for `welcome`, `thank you`, `thanks`, `good morning`, `good afternoon`, `let's get started`, `let's begin`, `great question`, `enjoy`; all must be absent.
+2b. **Direct register, no filler.** Search for hedged or padded language: `perhaps`, `maybe`, `arguably`, `somewhat`, `quite`, `rather`, `essentially`, `basically`, `in order to`, `utilize`, `leverage`, `delve`, `moreover`, `facilitate`. Any hit is a failure.
 3. **No clipping.** Check that the final expected line of every content slide appears in extracted text. Beamer can clip vertical overflow silently.
 4. **Page count.** Compare `pdfinfo` against the expected slide count.
 5. **No unresolved placeholders.** Search for `TODO`, `TBD`, `XXX`, `lorem`, and any copied starter text that must be replaced.

@@ -4,7 +4,7 @@ This guide defines the content contract for `neutral-beamer`. The PDF is the onl
 
 ## Before writing
 
-Create a brief with the topic, purpose, audience, desired takeaway, intended duration, and evidence/source boundaries. Assume the audience has no prior background unless the brief explicitly says otherwise.
+Create a brief with the topic, purpose, audience, desired takeaway, intended duration, and evidence/source boundaries. Always write for a reader with no prior background. A brief may identify a narrower audience, but it never removes the requirement to define terms and explain visuals.
 
 Write as a domain-fluent presenter explaining one useful idea to an intelligent outsider. Do not perform expertise. Make the idea understandable.
 
